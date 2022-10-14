@@ -12,6 +12,7 @@ Length of a movie will have a significant impact on its box office numbers.
 		2. https://www.omdbapi.com/
 
 ---> Extract the data from those sources </br>
+
 		1. Kaggle - download the 6 csvs and read them in as csvs using pandas </br>
 
 		2. OMDb API - using requests, gather relevant API data using Kaggle database
