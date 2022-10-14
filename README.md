@@ -2,32 +2,14 @@
 ## Team Members: 
 Dejan Savic, Jenish Rana, Carolyn Johnson, Mai Dang 
 
-## Hypothesis: 
-Length of a movie will have a significant impact on its box office numbers. 
+## Proposal:
 
-## Data Cleanup and Analysis Requirements
+We would like to analyze a dataset of movies to determine whether there are factors that affect a movie’s box office numbers. To complete this analysis, we will use the ETL process to utilize two different datasets from the following sources:</br>
 
----> Cite the data sources: </br>
+https://www.kaggle.com/datasets/whenamancodes/popular-movies-datasets-58000-movies?resource=download
 
-		1. https://www.kaggle.com/datasets/whenamancodes/popular-movies-datasets-58000-movies?resource=download
-		
-		2. https://www.omdbapi.com/
+https://www.omdbapi.com/
 
----> Extract the data from those sources </br>
+The Kaggle dataset includes a list of 58,099 movies with their Titles and Genres in one csv. The other 5 csvs all contain unique IDs for us to be able to merge them to bring in other information such as IMDb Tags, Ratings, Category Tags, etc. Using the Kaggle dataset, we will use the IMDb tags to request API information on Runtime and Box Office numbers for each movie in the dataset.
 
-		1. Kaggle - download the 6 csvs and read them in as csvs using pandas 
-
-		2. OMDb API - using requests, gather relevant API data using Kaggle database
-
----> Transform the data
-
----> Load the data into a database
-
-## Report Requirements
-	
----> The datasets used and their sources
-
----> Types of data wrangling
-
----> Schemata used in final production
-
+Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of SQLAlchemy to store all our information in relevant tables.
