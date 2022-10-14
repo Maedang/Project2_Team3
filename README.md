@@ -16,8 +16,9 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
 
 # Report:
 
-## √ Extract: indicates the original data sources and how the data were formatted at a professional level
+## √ Extract: 
+    For our project, we searched for datasets of movies in relation to box office numbers, genres and runtime. Specifically, our data consists of a Kaggle dataset that contained 6 csv's with the main dataset containing Titles and Genres of 58,099 different box office movies. We then used the other csv's within the Kaggle dataset that contained various factors like ratings and IMDb tags to request API's and access resource certain information like Runtime and Box Office numbers. We loaded the data in Postgres, and Juypter Notebook and ran into some errors. We spent a lot of time trying to fix the errors in the dataset and transform the data. However, we ultimately was able to clean the dataset and continue our analysis. 
 
-## √ Transform: explains what data clearing or transformation was required at a professional level
+## √ Transform: 
 
-## √ Load: explains the final database, tables/collections, and why the topic was chosen at a professional level
+## √ Load: 
