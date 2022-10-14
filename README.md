@@ -14,7 +14,7 @@ The Kaggle dataset includes a list of 58,099 movies with their Titles and Genres
 
 Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of SQLAlchemy to store all our information in relevant tables.
 
-# Report:
+# Report
 
 ## √ Extract: 
    For our project, we searched for datasets of movies in relation to box office numbers, genres, and runtime. Specifically, our data consists of a Kaggle  dataset that contained 6 csv's with the main dataset containing Titles and Genres of 58,099 different box office movies. We then used the other csv's within the Kaggle dataset that contained various factors like ratings and IMDb tags to request API's and access resource certain information like Runtime and Box Office numbers. The data was inputted into Juypter Notebook and ran into some errors. We spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres.
