@@ -13,3 +13,11 @@ We would like to analyze a dataset of movies to determine whether there are fact
 The Kaggle dataset includes a list of 58,099 movies with their Titles and Genres in one csv. The other 5 csvs all contain unique IDs for us to be able to merge them to bring in other information such as IMDb Tags, Ratings, Category Tags, etc. Using the Kaggle dataset, we will use the IMDb tags to request API information on Runtime and Box Office numbers for each movie in the dataset.
 
 Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of SQLAlchemy to store all our information in relevant tables.
+
+# Report:
+
+## √ Extract: indicates the original data sources and how the data were formatted at a professional level
+
+## √ Transform: explains what data clearing or transformation was required at a professional level
+
+## √ Load: explains the final database, tables/collections, and why the topic was chosen at a professional level
