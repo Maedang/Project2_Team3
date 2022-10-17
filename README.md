@@ -21,4 +21,5 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
 
 ## √ Transform: 
     During our transforming stage of cleaning, joining, filtering, and aggregating our csv datasets, we had a few steps to undertake. Our first steps in cleaning up the datasets involved figuring out which variables were not relevant. Pandas was used as the main function in our Jupyter Notebook to load all three CSV files. Next was the filtering the files and joining them together into data frames. Removed the     column due to missing information which was not relevant to the focus of this study. The team identified nulls by performing an inner merge on the     columns across all datasets. One of our last steps were to create queries to provide evidence to that supports or dethrones the hypothesis by grouping the data by    . 
+    
 ## √ Load: 
