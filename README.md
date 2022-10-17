@@ -17,12 +17,26 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
 # Report
 
 ## √ Extract: 
-   For our project, we searched for datasets of movies in relation to year of release, country, language, box office numbers, genres, IMDb rating, movie rating, and runtime. Specifically, our data consists of a Kaggle dataset that contained 6 csv's with the main dataset containing Titles and Genres of 58,099 different box office movies. We then used the other csv's within the Kaggle dataset that contained various factors like ratings and IMDb tags to request the necessary information such as Runtime and Box Office from our API source. To extract the csv data from Kaggle, we used the Pandas module to read the csv's and perform our Transform stage. For the extraction of our API data, we utilized the  We spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres.</br>
+ For our project, we searched for datasets of movies in relation to year of release, country, language, box office numbers, genres, IMDb rating, movie rating, and runtime. Specifically, our data consists of a Kaggle dataset that contained 6 csv's with the main dataset containing Titles and Genres of 58,099 different box office movies. We then used the other csv's within the Kaggle dataset that contained various factors like ratings and IMDb tags to request the necessary information such as Runtime and Box Office from our API source.</br>
+
+  ```Python
+  # Path to resources
+  movies_path = "Resources/movies.csv"
+  links_path = "Resources/links.csv"
+
+  # Read the csvs
+  movies_df = pd.read_csv(movies_path)
+  links_df = pd.read_csv(links_path)
+
+  # Merge the two csvs into one Pandas Dataframe
+  merge_df = pd.merge(movies_df, links_df, on = "movieId", how = "outer")
+  ```
+  For the extraction of our API data, we utilized the Requests module to perform aWe spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres.</br>
 
 ## √ Transform: 
   During our transforming stage of cleaning, joining, filtering, and aggregating our csv datasets, we had a few steps to undertake. Our first steps in cleaning up the datasets involved figuring out which variables were not relevant. Pandas was used as the main tool in our Jupyter Notebook to load all three CSV files. Next was the filtering the files and joining them together into data frames. Removed the // column due to missing information which was not relevant to the focus of this study. The team identified nulls by performing an inner merge on the // columns across all datasets. One of our last steps were to create queries to provide evidence to that supports or dethrones the hypothesis by grouping the data by //.</br>
     
 ## √ Load: 
- The last step was to transfer our final output into a Database. We created a database using .csv file within the Kaggle dataset, API’s, and respective table to match the columns from the final Panda's Data Frame using Postgres database using PG admin to store our original clean data sets. We reconnected to the database and generated additional tables for the data frames.
+  The last step was to transfer our final output into a Database. We created a database using .csv file within the Kaggle dataset, API’s, and respective table to match the columns from the final Panda's Data Frame using Postgres database using PG admin to store our original clean data sets. We reconnected to the database and generated additional tables for the data frames.
 
  
