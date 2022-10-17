@@ -23,3 +23,6 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
   During our transforming stage of cleaning, joining, filtering, and aggregating our csv datasets, we had a few steps to undertake. Our first steps in cleaning up the datasets involved figuring out which variables were not relevant. Pandas was used as the main function in our Jupyter Notebook to load all three CSV files. Next was the filtering the files and joining them together into data frames. Removed the // column due to missing information which was not relevant to the focus of this study. The team identified nulls by performing an inner merge on the // columns across all datasets. One of our last steps were to create queries to provide evidence to that supports or dethrones the hypothesis by grouping the data by //. 
     
 ## √ Load: 
+ The last step was to transfer our final output into a Database. We created a database using .csv file within the Kaggle dataset, API’s, and respective table to match the columns from the final Panda's Data Frame using Postgres database using PG admin to store our original clean data sets. We reconnected to the database and generated additional tables for the data frames.
+
+ 
