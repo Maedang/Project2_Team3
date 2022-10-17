@@ -31,7 +31,48 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
   # Merge the two csvs into one Pandas Dataframe
   merge_df = pd.merge(movies_df, links_df, on = "movieId", how = "outer")
   ```
-  For the extraction of our API data, we utilized the Requests module to perform aWe spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres.</br>
+  For the extraction of our API data, we utilized the Requests module to perform a for loop with calls for each IMDb id in our Kaggle dataset. We then appended each response to empty lists to store in a dataframe and transform for database upload. We spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres.</br>
+
+  ```Python
+  # Empty lists to hold response info
+  box_office = []
+  imdb_id = []
+  title = []
+  year = []
+  runtime = []
+  genre = []
+  rated = []
+  language = []
+  country = []
+  metascore = []
+  imdb_rating = []
+  type = []
+
+  counter = 0
+
+  # For loop to append response results for each movie in our csv file
+  for id in merged_movies['imdbId']:
+      try:
+          response = requests.get(url + id + api_key).json()
+          box_office.append(response['BoxOffice'])
+          imdb_id.append(response['imdbID'])
+          title.append(response['Title'])
+          year.append(response['Year'])
+          runtime.append(response['Runtime'])
+          genre.append(response['Genre'])
+          rated.append(response['Rated'])
+          language.append(response['Language'])
+          country.append(response['Country'])
+          metascore.append(response['Metascore'])
+          imdb_rating.append(response['imdbRating'])
+          type.append(response['Type'])
+          counter += 1
+          print(f'Processed record: {id}')
+      except KeyError:
+          print(f'Record {id} missing key information. Skipping...')
+      
+  print(f'The total number of records found was: {counter} out of {merged_movies.imdbId.count()}')
+  ```
 
 ## √ Transform: 
   During our transforming stage of cleaning, joining, filtering, and aggregating our csv datasets, we had a few steps to undertake. Our first steps in cleaning up the datasets involved figuring out which variables were not relevant. Pandas was used as the main tool in our Jupyter Notebook to load all three CSV files. Next was the filtering the files and joining them together into data frames. Removed the // column due to missing information which was not relevant to the focus of this study. The team identified nulls by performing an inner merge on the // columns across all datasets. One of our last steps were to create queries to provide evidence to that supports or dethrones the hypothesis by grouping the data by //.</br>
