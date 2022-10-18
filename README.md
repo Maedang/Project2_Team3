@@ -3,7 +3,7 @@
 Dejan Savic, Jenish Rana, Carolyn Johnson, Mai Dang 
 
 ## √ Proposal:
-  We would like to create a database of movies to be able to determine whether there are factors that affect a movie’s box office numbers. To complete this analysis, we will use the ETL process to utilize two different datasets from the following sources:</br>
+  We would like to create a database of movies to be able to determine whether there are factors that affect a movie’s box office numbers. To complete this analysis, we will use the ETL process to utilize the following two sources:</br>
 
     https://www.kaggle.com/datasets/whenamancodes/popular-movies-datasets-58000-movies?resource=download
 
@@ -11,7 +11,7 @@ Dejan Savic, Jenish Rana, Carolyn Johnson, Mai Dang
 
   The Kaggle dataset includes a list of 58,099 movies with their Titles and Genres in one csv. The other 5 csvs all contain unique IDs for us to be able to merge them to bring in other information such as IMDb Tags, Ratings, Category Tags, etc. Using the Kaggle dataset, we will use the IMDb tags to request API information on Box Office numbers as well as other various information for each movie in the dataset.</br>
 
-  Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of SQLAlchemy to store all our information in relevant tables. We chose a relational database because our data comes with unique identifiers that are able to identify the pre-established relationships that already exist within the dataset.</br>
+  Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of PostgreSQL to store all our information in relevant tables. We chose a relational database because our data comes with unique identifiers that are able to identify the pre-established relationships that already exist within the dataset.</br>
 
 ## √ Extract: 
  For our project, we searched for datasets of movies in relation to year of release, country, language, box office numbers, genres, IMDb rating, movie rating, and runtime. Specifically, our data consists of a Kaggle dataset that contained 6 csv's with the main dataset containing Titles and Genres of 58,099 different box office movies. We then used the other csv's within the Kaggle dataset that contained various factors like ratings and IMDb tags to request the necessary information such as Runtime and Box Office from our API source:</br>
@@ -28,7 +28,7 @@ Dejan Savic, Jenish Rana, Carolyn Johnson, Mai Dang
   # Merge the two csvs into one Pandas Dataframe
   merge_df = pd.merge(movies_df, links_df, on = "movieId", how = "outer")
   ```
-  For the extraction of our API data, we utilized the Requests module to perform a for loop with calls for each IMDb id in our Kaggle dataset. We then appended each response to empty lists to store in a dataframe and transform for database upload. We spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres:</br>
+  For the extraction of our API data, we utilized the Requests module with a for loop to call for each IMDb id in our Kaggle dataset. We then appended each response to empty lists to store in a dataframe and transform for database upload. We spent some time fixing the errors in the dataset and transforming the data. However, we ultimately were able to clean the dataset, continue our analysis and load the data into Postgres:</br>
 
   ```Python
   # Empty lists to hold response info
@@ -72,7 +72,7 @@ Dejan Savic, Jenish Rana, Carolyn Johnson, Mai Dang
   ```
 
 ## √ Transform: 
-  During our transforming stage of cleaning, joining, filtering, and aggregating our csv datasets, we had a few steps to undertake. Our first steps in cleaning up the datasets involved figuring out which variables were not relevant. Pandas was used as the main tool in our Jupyter Notebook to load all three CSV files. Next was filtering the files and joining them together into data frames. We removed the genres and tmdbId columns as they were not relevant to the focus of this study. The team identified nulls by performing an outer merge on the movieId column across all datasets. The key to being able to request the information from the API was in the imdbId tag in the csv's. To match the IDs to the parameters the API was requesting, we had to transform the imdbId column using pandas: </br>
+  During our transforming stage of cleaning, joining, filtering, and aggregating our csv datasets, we had a few steps to undertake. Our first steps in cleaning up the datasets involved figuring out which variables were not relevant. Pandas was used as the main tool in our Jupyter Notebook to load all three CSV files. Next was filtering the files and joining them together into data frames. We removed the genres and tmdbId columns as they were not relevant to the focus of this study. The team identified nulls by performing an outer merge on the movieId column across all datasets. The key to being able to request the information from the API was in the imdbId tag in the csv's. To match the IDs to the parameters the API was requesting, we had to transform the imdbId column using Pandas: </br>
   
   ```Python
   # Drop N/As
