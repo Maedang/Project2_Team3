@@ -112,3 +112,5 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
   The last step was to transfer our final output into a Database. We created a database using .csv file within the Kaggle dataset, API’s, and respective table to match the columns from the final Panda's Data Frame using Postgres database using PG admin to store our original clean data sets. We reconnected to the database and generated additional tables for the data frames.
 
  
+
+ 
