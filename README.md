@@ -3,16 +3,15 @@
 Dejan Savic, Jenish Rana, Carolyn Johnson, Mai Dang 
 
 ## √ Proposal:
+  We would like to create a database of movies to be able to determine whether there are factors that affect a movie’s box office numbers. To complete this analysis, we will use the ETL process to utilize two different datasets from the following sources:</br>
 
-We would like to create a database of movies to be able to determine whether there are factors that affect a movie’s box office numbers. To complete this analysis, we will use the ETL process to utilize two different datasets from the following sources:</br>
+      https://www.kaggle.com/datasets/whenamancodes/popular-movies-datasets-58000-movies?resource=download
 
-    https://www.kaggle.com/datasets/whenamancodes/popular-movies-datasets-58000-movies?resource=download
+      https://www.omdbapi.com/
 
-    https://www.omdbapi.com/
+  The Kaggle dataset includes a list of 58,099 movies with their Titles and Genres in one csv. The other 5 csvs all contain unique IDs for us to be able to merge them to bring in other information such as IMDb Tags, Ratings, Category Tags, etc. Using the Kaggle dataset, we will use the IMDb tags to request API information on Box Office numbers as well as other various information for each movie in the dataset.</br>
 
-The Kaggle dataset includes a list of 58,099 movies with their Titles and Genres in one csv. The other 5 csvs all contain unique IDs for us to be able to merge them to bring in other information such as IMDb Tags, Ratings, Category Tags, etc. Using the Kaggle dataset, we will use the IMDb tags to request API information on Box Office numbers as well as other various information for each movie in the dataset.</br>
-
-Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of SQLAlchemy to store all our information in relevant tables. We chose a relational database because our data comes with unique identifiers that are able to identify the pre-established relationships that already exist within the dataset.</br>
+  Once we have cleaned, merged, and identified the variables we are looking for, we will use a relational database in the form of SQLAlchemy to store all our information in relevant tables. We chose a relational database because our data comes with unique identifiers that are able to identify the pre-established relationships that already exist within the dataset.</br>
 
 ## √ Extract: 
  For our project, we searched for datasets of movies in relation to year of release, country, language, box office numbers, genres, IMDb rating, movie rating, and runtime. Specifically, our data consists of a Kaggle dataset that contained 6 csv's with the main dataset containing Titles and Genres of 58,099 different box office movies. We then used the other csv's within the Kaggle dataset that contained various factors like ratings and IMDb tags to request the necessary information such as Runtime and Box Office from our API source:</br>
@@ -107,7 +106,7 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
   ```
     
 ## √ Load: 
-  The last step in the project was to load the data into a database for storage and use. We chose to utilize PostgreSQL using pgAdmin as our management tool. Since much of our transformation and cleaning of data was done previous to loading into our database, our database will be pretty straightforward. We created a Database using pgAdmin and then used a SQL statement to create a table named movies in the Database:</br>
+  The last step in the project was to load the data into a database for storage and use. We chose to utilize PostgreSQL using pgAdmin as our management tool due to the fact that our data was relational in nature. Since much of our transformation and cleaning of data was done previous to loading into our database, our database will be pretty straightforward. We created a Database using pgAdmin and then used a SQL statement to create a table named movies in the Database:</br>
 
   ```SQL
   -- Create table with columns and data types
@@ -127,7 +126,7 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
 );
   ```
 
-  After creating the table, we imported the csv file of our clean_api_data using the management tool. From the 58,099 movies we extracted from Kaggle when we began the ETL process, 10,774 movies made the cut into the database with clean API data. From there we were able to conduct a handful of SQL queries that may provide interesting points for further analysis in future projects:
+  After creating the table, we imported the csv file of our clean_api_data using the management tool. From the 58,099 movies we extracted from Kaggle when we began the ETL process, 10,774 movies made the cut into the database with clean API data. From there we were able to conduct a handful of SQL queries that may provide interesting points for further analysis in future projects:</br>
 
   ```SQL
   -- Query title, box_office, country from only US showing movies and sort by descending order of box_office
@@ -174,6 +173,10 @@ Once we have cleaned, merged, and identified the variables we are looking for, w
   ORDER BY "AverageBoxOffice" DESC; 
   -- G rating seems to be the highest grossing rating category on average
   ```
+
+## √ Findings:
+  The ability to store a database for further analysis and use it to create various types of views is a compelling feature of non-relational and relational databases. In our case, PostgreSQL deemed to be a viable option for storing our data so that we can expand upon this project in a future time. One limitation of our project was the fact that our database was limited in quality based upon the quality of the initial source (Kaggle). We are limited to the information we found in those csv files. Furthermore, the API also has some limitations in which we cannot control, such as API call limits, potentially incorrect information, etc. This seems to point to the notion that the more sources your data is coming from in your database, the more likely you are to run into limitations/bottlenecks of your ETL process (or the time component of your ETL process grows in relation to the rest of your project). Thoughts for further analysis include performing more complex merges, importing new data sources, and creating various binned categories and aggregates for columns such as runtime, language, or box office to compare groups of data in our database. Overall, we have successfully accomplished the ETL process and are now prepared to continue with further analysis at a future time.</br>
+
 
  
 
